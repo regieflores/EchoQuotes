@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Quote Generator</title> 
+  <link rel="stylesheet" href="styles.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+ <style type="text/css" id="dcoder_stylesheet">body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #F0F4F8; /* Light blue background color */
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    background-color: #ffffff; /* White container background */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+    background-color: #edf2f7; /* Light gray background */
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.message {
+    margin: 20px;
+    padding: 25px;
+    border-radius: 20px;
+    background-color: #f8fafc; /* Very light gray background */
+    display: inline-block;
+    max-width: 80%;
+    color: #2d3748; /* Dark text color */
+}
+
+.copy-button,
+.glow-on-click {
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.copy-button {
+    background-color: #4299e1; /* Blue button color */
+    box-shadow: 3px 3px 5px #bcbcbc, -3px -3px 5px #ffffff;
+}
+
+.copy-button:hover {
+    background-color: #3182ce; /* Darker blue on hover */
+}
+
+.glow-on-click {
+    background-color: #c3e6cb; /* Softer green button color */
+    box-shadow: 3px 3px 5px #bcbcbc, -3px -3px 5px #ffffff;
+}
+
+.glow-on-click:hover {
+    background-color: #b1d9b1; /* Darker softer green on hover */
+}
+
+.glow-on-click:focus {
+    outline: none;
+}
+
+.glow-on-click:active {
+    animation: button-glow 0.4s ease-out;
+}
+
+@keyframes button-glow {
+    0% { box-shadow: 0 0 0 0 rgba(195, 230, 203, 0.7); }
+    100% { box-shadow: 0 0 0 15px rgba(195, 230, 203, 0); }
+}</style></head> 
+ <body> 
+  <div class="container"> 
+   <div class="chat-box"> 
+    <div id="quote" class="message">
+     Click below for a quote!
+    </div> <button id="copyBtn" class="copy-button"><i class="far fa-copy"></i></button> 
+   </div> <button id="quoteBtn" class="glow-on-click">Generate Quote</button> 
+   <div class="more-quotes"> <span id="moreQuotes">Need more quotes?</span> <i class="fas fa-sync-alt" id="moreQuotesIcon"></i> 
+   </div> 
+  </div> 
+  <script src="script.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">const quotes = [
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "Stay hungry, stay foolish. - Steve Jobs",
+    "Life is what happens when you're busy making other plans. - John Lennon",
+    "In the middle of difficulty lies opportunity. - Albert Einstein",
+    "Be yourself; everyone else is already taken. - Oscar Wilde",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+    "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+    "The best way to predict the future is to create it. - Peter Drucker",
+    "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
+    "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
+    "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+    "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+    "Life isn’t about waiting for the storm to pass, it’s about learning to dance in the rain. - Vivian Greene",
+    "You must be the change you wish to see in the world. - Mahatma Gandhi",
+    "The journey of a thousand miles begins with one step. - Lao Tzu",
+    "Happiness is not something ready-made. It comes from your own actions. - Dalai Lama",
+    "Challenges are what make life interesting and overcoming them is what makes life meaningful. - Joshua J. Marine",
+    // Add more quotes here
+    "Nothing is impossible, the word itself says 'I'm possible'! - Audrey Hepburn",
+    "Life is either a daring adventure or nothing at all. - Helen Keller",
+    "We may encounter many defeats but we must not be defeated. - Maya Angelou",
+    "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+    "You miss 100% of the shots you don’t take. - Wayne Gretzky",
+    "If you want to lift yourself up, lift up someone else. - Booker T. Washington",
+    "The best revenge is massive success. - Frank Sinatra",
+    "Start where you are. Use what you have. Do what you can. - Arthur Ashe",
+    "The way to get started is to quit talking and begin doing. - Walt Disney",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+   
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "Stay hungry, stay foolish. - Steve Jobs",
+    "Life is what happens when you're busy making other plans. - John Lennon",
+    "In the middle of difficulty lies opportunity. - Albert Einstein",
+    "Be yourself; everyone else is already taken. - Oscar Wilde",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+    "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+    "The best way to predict the future is to create it. - Peter Drucker",
+    "It's not whether you get knocked down, it's whether you get up. - Vince Lombardi",
+    "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
+    "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+    "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+    "Life isn’t about waiting for the storm to pass, it’s about learning to dance in the rain. - Vivian Greene",
+    "You must be the change you wish to see in the world. - Mahatma Gandhi",
+    "The journey of a thousand miles begins with one step. - Lao Tzu",
+    "Happiness is not something ready-made. It comes from your own actions. - Dalai Lama",
+    "Challenges are what make life interesting and overcoming them is what makes life meaningful. - Joshua J. Marine",
+    // Previous quotes...
+    
+    // Additional quotes
+    "When you know what you want, and you want it badly enough, you'll find a way to get it. - Jim Rohn",
+    "Life is 10% what happens to us and 90% how we react to it. - Charles R. Swindoll",
+    "Your time is limited, so don't waste it living someone else's life. - Steve Jobs",
+    "The greatest pleasure in life is doing what people say you cannot do. - Walter Bagehot",
+    "The best way out is always through. - Robert Frost",
+    "The only impossible journey is the one you never begin. - Tony Robbins",
+    "Don't be afraid to give up the good to go for the great. - John D. Rockefeller",
+    "The mind is everything. What you think, you become. - Buddha",
+    "The only person you are destined to become is the person you decide to be. - Ralph Waldo Emerson",
+    "Opportunities don’t happen, you create them. - Chris Grosser",
+    // Add more quotes here...
+    // ... (continue adding quotes)
+];
+
+
+
+const quoteDisplay = document.getElementById('quote');
+const generateBtn = document.getElementById('quoteBtn');
+const moreQuotesIcon = document.getElementById('moreQuotesIcon');
+const copyBtn = document.getElementById('copyBtn');
+
+function displayRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    quoteDisplay.textContent = quotes[randomIndex];
+    quoteDisplay.classList.add('message');
+    quoteDisplay.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function copyQuoteToClipboard() {
+    const quoteToCopy = quoteDisplay.textContent;
+    navigator.clipboard.writeText(quoteToCopy).then(() => {
+        alert('Quote copied to clipboard!');
+    }).catch(err => {
+        console.error('Unable to copy quote: ', err);
+    });
+}
+
+generateBtn.addEventListener('click', displayRandomQuote);
+moreQuotesIcon.addEventListener('click', displayRandomQuote);
+copyBtn.addEventListener('click', copyQuoteToClipboard);</script></body></html>
